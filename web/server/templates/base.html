@@ -101,7 +101,7 @@
             </svg>
         </button>
         <button id="darkModeToggle"
-            class="m-1.5 flex items-center bg-blue-500 text-white py-2 px-4 rounded-full shadow-lg hover:bg-blue-600 focus:outline-none">
+            class="m-1.5 flex items-center bg-gray-200 text-gray-800 py-2 px-4 rounded-full shadow-lg hover:bg-gray-300 focus:outline-none dark:bg-gray-700 dark:text-yellow-300 dark:hover:bg-gray-600">
             <svg id="darkIcon" xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 384 512">
                 <!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. -->
                 <path
@@ -262,8 +262,8 @@
         function updateThemeIcons() {
             const isDarkMode = localStorage.theme === 'dark';
 
-            document.getElementById('darkIcon').classList.toggle('hidden', !isDarkMode);
-            document.getElementById('lightIcon').classList.toggle('hidden', isDarkMode);
+            document.getElementById('darkIcon').classList.toggle('hidden', isDarkMode);
+            document.getElementById('lightIcon').classList.toggle('hidden', !isDarkMode);
         }
 
         function applyTheme() {
