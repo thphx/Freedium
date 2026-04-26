@@ -260,7 +260,7 @@
     }
 
     function updateThemeIcons() {
-        const isDarkMode = localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches);
+        const isDarkMode = localStorage.theme === 'dark';
         document.getElementById('darkIcon').classList.toggle('hidden', !isDarkMode);
         document.getElementById('lightIcon').classList.toggle('hidden', isDarkMode);
     }
@@ -283,17 +283,15 @@
         updateThemeIcons();
     })
 
-    if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
-        document.documentElement.classList.add('dark');
-        //document.getElementById('darkIcon').classList.remove('hidden');
-        //document.getElementById('lightIcon').classList.add('hidden')
-        changeTheme("androidstudio");
-    } else {
-        document.documentElement.classList.remove('dark')
-        //document.getElementById('lightIcon').classList.remove('hidden');
-        //document.getElementById('darkIcon').classList.add('hidden');
-        changeTheme("a11y-light");
-    }
+    if (localStorage.theme === 'dark') {
+    document.documentElement.classList.add('dark');
+    document.documentElement.style.cssText = "--lightense-backdrop: black;";
+    changeTheme("androidstudio");
+} else {
+    document.documentElement.classList.remove('dark');
+    document.documentElement.style.cssText = "--lightense-backdrop: white;";
+    changeTheme("a11y-light");
+}
 </script>
 <script>
     const openModalButton = document.getElementById('openProblemModal');
