@@ -1,5 +1,6 @@
 import asyncio
 import pickle
+import html
 
 from fastapi.responses import HTMLResponse
 from html5lib import serialize
@@ -16,7 +17,18 @@ from server.utils.logger_trace import trace
 from server.utils.notify import send_message
 from server.utils.utils import safe_check_redis_connection
 
+def decode_html_entities(value):
+    if isinstance(value, str):
+        return html.unescape(value)
 
+    if isinstance(value, dict):
+        return {key: decode_html_entities(item) for key, item in value.items()}
+
+    if isinstance(value, list):
+        return [decode_html_entities(item) for item in value]
+
+    return value
+    
 @trace
 @aio_redis_cache(10 * 60)
 async def render_homepage(limit: int = config.HOME_PAGE_MAX_POSTS, as_html: bool = False):
@@ -31,6 +43,7 @@ async def render_homepage(limit: int = config.HOME_PAGE_MAX_POSTS, as_html: bool
                 logger.debug(f"Fetching post_id: {post_id}")
                 post_data = await medium_parser.query(post_id, force_cache=True, retry=1)
                 post_metadata = await medium_parser.generate_metadata(post_data, post_id, as_dict=True)
+                post_metadata = decode_html_entities(post_metadata)
                 outlet_posts_list.append(post_metadata)
             except Exception as ex:
                 await handle_exception(ex, message=f"Couldn't render post_id for postleter: {post_id}. Just ignore that")
