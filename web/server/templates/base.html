@@ -252,7 +252,6 @@
         link.rel = "stylesheet";
         link.href = `https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/${themeName}.min.css`;
         document.head.appendChild(link);
-        document.querySelector("span").textContent = themeName;
     }
 
     function navigateToOrigin() {
@@ -268,7 +267,7 @@
     updateThemeIcons();
 
     document.getElementById('darkModeToggle').addEventListener('click', function () {
-        const isDarkMode = localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches);
+        const isDarkMode = localStorage.theme === 'dark';
         if (isDarkMode) {
             document.documentElement.classList.remove('dark');
             document.documentElement.style.cssText = "--lightense-backdrop: white;";
