@@ -1,38 +1,27 @@
-<div class="w-full max-w-4xl mx-auto bg-white/90 dark:bg-gray-700/80 shadow-lg rounded-2xl p-5 md:p-6">
-  <form
-    id="medium-link-form"
-    class="flex items-center gap-3 rounded-xl border border-gray-300 dark:border-gray-500 bg-white dark:bg-gray-800 px-4 py-3"
-  >
-    <svg
-      class="h-5 w-5 text-gray-500 dark:text-gray-100 shrink-0"
-      fill="none"
-      stroke="currentColor"
-      viewBox="0 0 24 24"
-      xmlns="http://www.w3.org/2000/svg"
-    >
-      <path
-        stroke-linecap="round"
-        stroke-linejoin="round"
-        stroke-width="2"
-        d="M12 6v6m0 0v6m0-6h6m-6 0H6"
-      ></path>
-    </svg>
+<div class="w-full max-w-4xl px-4 mx-auto">
+    <div class="p-4 bg-white border border-gray-200 shadow-md dark:bg-gray-700 dark:border-gray-600 rounded-2xl">
+        <form
+            action="/"
+            method="get"
+            class="flex items-center gap-3 px-4 py-3 border border-gray-300 dark:border-gray-500 rounded-xl"
+        >
+            <span class="text-xl text-gray-500 dark:text-gray-300">+</span>
 
-    <input
-      id="medium-link-input"
-      type="text"
-      placeholder="Enter Medium post link"
-      class="w-full bg-transparent border-0 focus:border-0 focus:ring-0 focus:outline-none text-gray-900 placeholder-gray-400 dark:text-white dark:placeholder-gray-300"
-      autofocus
-    />
+            <input
+                type="text"
+                name="url"
+                placeholder="Enter Medium post link"
+                class="w-full text-gray-900 bg-transparent border-0 dark:text-white placeholder:text-gray-400 dark:placeholder:text-gray-300 focus:border-0 focus:ring-0 focus:outline-none"
+            >
 
-    <button
-      type="submit"
-      class="shrink-0 bg-green-500 text-white px-4 py-2 rounded-lg hover:bg-green-600 focus:outline-none"
-    >
-      Go
-    </button>
-  </form>
+            <button
+                type="submit"
+                class="px-5 py-2.5 font-medium text-white bg-green-500 rounded-lg hover:bg-green-600"
+            >
+                Go
+            </button>
+        </form>
+    </div>
 </div>
 
 <script>
