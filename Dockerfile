@@ -22,6 +22,24 @@ COPY ./medium-parser ./medium-parser
 RUN --mount=type=cache,id=s/1995182b-c4df-465f-afec-b3f918aafc05-pip,target=/root/.cache/pip pip3 install ./medium-parser
 
 COPY ./web ./web
+
+# Railway UI fix:
+# Keep the app runtime exactly like the original Dockerfile.
+# Replace the local Caddy-served Tailwind hotfix with Tailwind CDN inside the image.
+RUN python3 - <<'PY'
+from pathlib import Path
+
+path = Path("/app/web/server/templates/base.html")
+text = path.read_text()
+
+text = text.replace(
+    '<script src="/tailwindcssv3-freedium-hotfix.js"></script>',
+    '<script src="https://cdn.tailwindcss.com?plugins=forms,typography,aspect-ratio"></script>'
+)
+
+path.write_text(text)
+PY
+
 WORKDIR /app/web
 
 RUN --mount=type=cache,id=s/1995182b-c4df-465f-afec-b3f918aafc05-poetry,target=/tmp/poetry_cache poetry install --without dev --only main --no-ansi
