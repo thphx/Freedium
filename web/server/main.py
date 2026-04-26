@@ -3,6 +3,7 @@ from contextlib import asynccontextmanager
 
 import sentry_sdk
 from fastapi import APIRouter, FastAPI
+from fastapi.staticfiles import StaticFiles
 from loguru import logger
 from pydantic_settings import BaseSettings
 
