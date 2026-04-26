@@ -102,19 +102,30 @@
     </svg>
 </button>
         <button id="darkModeToggle"
-            class="m-1.5 flex items-center bg-gray-200 text-gray-800 py-2 px-4 rounded-full shadow-lg hover:bg-gray-300 focus:outline-none dark:bg-gray-700 dark:text-yellow-300 dark:hover:bg-gray-600">
-            <svg id="darkIcon" xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 384 512">
-                <!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. -->
-                <path
-                    d="M223.5 32C100 32 0 132.3 0 256S100 480 223.5 480c60.6 0 115.5-24.2 155.8-63.4c5-4.9 6.3-12.5 3.1-18.7s-10.1-9.7-17-8.5c-9.8 1.7-19.8 2.6-30.1 2.6c-96.9 0-175.5-78.8-175.5-176c0-65.8 36-123.1 89.3-153.3c6.1-3.5 9.2-10.5 7.7-17.3s-7.3-11.9-14.3-12.5c-6.3-.5-12.6-.8-19-.8z" />
-            </svg>
-            <!-- SVG icon for light mode (e.g., a sun) -->
-            <svg class="hidden" id="lightIcon" xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 512 512">
-                <!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. -->
-                <path
-                    d="M361.5 1.2c5 2.1 8.6 6.6 9.6 11.9L391 121l107.9 19.8c5.3 1 9.8 4.6 11.9 9.6s1.5 10.7-1.6 15.2L446.9 256l62.3 90.3c3.1 4.5 3.7 10.2 1.6 15.2s-6.6 8.6-11.9 9.6L391 391 371.1 498.9c-1 5.3-4.6 9.8-9.6 11.9s-10.7 1.5-15.2-1.6L256 446.9l-90.3 62.3c-4.5 3.1-10.2 3.7-15.2 1.6s-8.6-6.6-9.6-11.9L121 391 13.1 371.1c-5.3-1-9.8-4.6-11.9-9.6s-1.5-10.7 1.6-15.2L65.1 256 2.8 165.7c-3.1-4.5-3.7-10.2-1.6-15.2s6.6-8.6 11.9-9.6L121 121 140.9 13.1c1-5.3 4.6-9.8 9.6-11.9s10.7-1.5 15.2 1.6L256 65.1 346.3 2.8c4.5-3.1 10.2-3.7 15.2-1.6zM160 256a96 96 0 1 1 192 0 96 96 0 1 1 -192 0zm224 0a128 128 0 1 0 -256 0 128 128 0 1 0 256 0z" />
-            </svg>
-        </button>
+    class="m-1.5 flex h-10 w-10 items-center justify-center rounded-full bg-gray-200 text-gray-800 shadow-lg hover:bg-gray-300 focus:outline-none dark:bg-gray-700 dark:text-yellow-300 dark:hover:bg-gray-600">
+
+    <!-- MDI weather-night: shown in light mode, click to switch to dark -->
+    <svg
+        id="darkIcon"
+        class="h-5 w-5 fill-current"
+        xmlns="http://www.w3.org/2000/svg"
+        viewBox="0 0 24 24"
+        aria-hidden="true"
+    >
+        <path d="M12.74 2.31L15.17 2.67L13.7 4.61C12.76 5.85 12.25 7.36 12.25 8.91C12.25 12.83 15.42 16 19.34 16C19.86 16 20.38 15.94 20.88 15.83L23.25 15.31L21.86 17.31C20.18 19.72 17.43 21.16 14.5 21.16C9.53 21.16 5.5 17.13 5.5 12.16C5.5 7.76 8.69 4 12.74 2.31Z" />
+    </svg>
+
+    <!-- MDI lightbulb-on-outline: shown in dark mode, click to switch to light -->
+    <svg
+        id="lightIcon"
+        class="hidden h-5 w-5 fill-current"
+        xmlns="http://www.w3.org/2000/svg"
+        viewBox="0 0 24 24"
+        aria-hidden="true"
+    >
+        <path d="M12 2A7 7 0 0 0 5 9C5 11.38 6.19 13.47 8 14.74V17A1 1 0 0 0 9 18H15A1 1 0 0 0 16 17V14.74C17.81 13.47 19 11.38 19 9A7 7 0 0 0 12 2M14 16H10V15.65C10.65 15.88 11.32 16 12 16S13.35 15.88 14 15.65V16M14.85 13.1L14 13.7V14.47C13.38 14.81 12.7 15 12 15S10.62 14.81 10 14.47V13.7L9.15 13.1C7.8 12.16 7 10.63 7 9A5 5 0 0 1 17 9C17 10.63 16.2 12.16 14.85 13.1M9 20H15V22H9V20M20 8H23V10H20V8M1 8H4V10H1V8M4.64 3.64L6.05 2.23L8.17 4.35L6.76 5.76L4.64 3.64M15.83 4.35L17.95 2.23L19.36 3.64L17.24 5.76L15.83 4.35Z" />
+    </svg>
+</button>
     </div>
 
 
