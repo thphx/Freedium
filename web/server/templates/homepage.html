@@ -9,7 +9,7 @@
                                 loading="eager"
                                 referrerpolicy="no-referrer"
                                 src="https://miro.medium.com/v2/resize:fit:700/{{ post.preview_image_id }}"
-                                alt="{{ post.title | replace('&amp;#39;', "'") | replace('&#39;', "'") | replace('&amp;quot;', '"') | replace('&quot;', '"') | replace('&amp;amp;', '&') | replace('&amp;', '&') }}"
+                                alt="{{ post.title }}"
                                 class="object-cover object-center w-full h-full transition duration-300 ease-in-out group-hover:scale-105"
                             >
                         {% else %}
@@ -17,7 +17,7 @@
                                 loading="eager"
                                 referrerpolicy="no-referrer"
                                 src="https://images.unsplash.com/photo-1636467204130-edf8ee206dce?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80"
-                                alt="{{ post.title | replace('&amp;#39;', "'") | replace('&#39;', "'") | replace('&amp;quot;', '"') | replace('&quot;', '"') | replace('&amp;amp;', '&') | replace('&amp;', '&') }}"
+                                alt="{{ post.title }}"
                                 class="object-cover object-center w-full h-full transition duration-300 ease-in-out group-hover:scale-105"
                             >
                         {% endif %}
@@ -26,34 +26,12 @@
                     <div class="flex flex-col flex-1 p-5">
                         <a href="/{{ post.post_id }}" class="block group">
                             <h3 class="h-[3.25rem] overflow-hidden text-lg font-semibold leading-snug text-gray-900 transition duration-200 dark:text-gray-100 group-hover:text-purple-500 md:text-xl line-clamp-2">
-                                {{ post.title
-                                    | replace('&amp;#39;', "'")
-                                    | replace('&#39;', "'")
-                                    | replace('&amp;#x27;', "'")
-                                    | replace('&#x27;', "'")
-                                    | replace('&amp;apos;', "'")
-                                    | replace('&apos;', "'")
-                                    | replace('&amp;quot;', '"')
-                                    | replace('&quot;', '"')
-                                    | replace('&amp;amp;', '&')
-                                    | replace('&amp;', '&')
-                                }}
+                                {{ post.title }}
                             </h3>
                         </a>
 
                         <p class="mt-3 h-[4.75rem] overflow-hidden leading-relaxed text-gray-600 line-clamp-3 dark:text-gray-200">
-                            {{ post.description
-                                | replace('&amp;#39;', "'")
-                                | replace('&#39;', "'")
-                                | replace('&amp;#x27;', "'")
-                                | replace('&#x27;', "'")
-                                | replace('&amp;apos;', "'")
-                                | replace('&apos;', "'")
-                                | replace('&amp;quot;', '"')
-                                | replace('&quot;', '"')
-                                | replace('&amp;amp;', '&')
-                                | replace('&amp;', '&')
-                            }}
+                            {{ post.description }}
                         </p>
 
                         <div class="mt-4 h-[2.5rem] overflow-hidden flex flex-wrap items-center gap-x-2 gap-y-1 text-sm text-gray-500 dark:text-gray-300">
