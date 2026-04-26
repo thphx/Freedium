@@ -1,70 +1,74 @@
-<div class="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
-    {% for post in post_list %}
-        <article class="overflow-hidden transition duration-200 bg-white border border-gray-200 shadow-sm dark:bg-gray-700 dark:border-gray-600 rounded-2xl hover:shadow-lg">
-            <a class="block group" href="/{{ post.post_id }}">
-                <div class="overflow-hidden bg-gray-100 aspect-video dark:bg-gray-800">
-                    {% if post.preview_image_id %}
-                        <img
-                            loading="eager"
-                            referrerpolicy="no-referrer"
-                            src="https://miro.medium.com/v2/resize:fit:700/{{ post.preview_image_id }}"
-                            alt="{{ post.title }}"
-                            class="object-cover w-full h-full transition duration-300 ease-in-out group-hover:scale-105"
-                        >
-                    {% else %}
-                        <img
-                            loading="eager"
-                            referrerpolicy="no-referrer"
-                            src="https://images.unsplash.com/photo-1636467204130-edf8ee206dce?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80"
-                            alt="{{ post.title }}"
-                            class="object-cover w-full h-full transition duration-300 ease-in-out group-hover:scale-105"
-                        >
-                    {% endif %}
-                </div>
+<section class="w-full px-4 pb-16">
+    <div class="max-w-6xl mx-auto">
+        <div class="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
+            {% for post in post_list %}
+                <article class="flex flex-col overflow-hidden transition duration-200 bg-white border border-gray-200 shadow-sm dark:bg-gray-700 dark:border-gray-600 rounded-2xl hover:shadow-lg">
+                    <a class="block group" href="/{{ post.post_id }}">
+                        <div class="overflow-hidden bg-gray-100 aspect-video dark:bg-gray-800">
+                            {% if post.preview_image_id %}
+                                <img
+                                    loading="eager"
+                                    referrerpolicy="no-referrer"
+                                    src="https://miro.medium.com/v2/resize:fit:700/{{ post.preview_image_id }}"
+                                    alt="{{ post.title }}"
+                                    class="object-cover w-full h-full transition duration-300 ease-in-out group-hover:scale-105"
+                                >
+                            {% else %}
+                                <img
+                                    loading="eager"
+                                    referrerpolicy="no-referrer"
+                                    src="https://images.unsplash.com/photo-1636467204130-edf8ee206dce?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80"
+                                    alt="{{ post.title }}"
+                                    class="object-cover w-full h-full transition duration-300 ease-in-out group-hover:scale-105"
+                                >
+                            {% endif %}
+                        </div>
 
-                <div class="p-5">
-                    <h3 class="text-xl font-semibold leading-snug text-gray-800 transition duration-200 dark:text-gray-100 group-hover:text-purple-400 lg:text-2xl line-clamp-3">
-                        {{ post.title }}
-                    </h3>
-                </div>
-            </a>
+                        <div class="p-5">
+                            <h3 class="text-xl font-semibold leading-snug text-gray-800 transition duration-200 dark:text-gray-100 group-hover:text-purple-400 lg:text-2xl line-clamp-3">
+                                {{ post.title }}
+                            </h3>
+                        </div>
+                    </a>
 
-            <div class="px-5 pb-5">
-                <div class="flex flex-wrap items-center gap-2 text-sm text-gray-500 dark:text-gray-300">
-                    {% if post.collection %}
-                        <a
-                            href="https://medium.com/{{ post.collection.slug }}"
-                            title="{{ post.collection.shortDescription }}"
-                            target="_blank"
-                            class="inline-flex items-center gap-1 hover:text-purple-500"
-                        >
-                            <img
-                                src="https://miro.medium.com/v2/resize:fill:48:48/{{ post.collection.avatar.id }}"
-                                alt="{{ post.collection.name }}"
-                                referrerpolicy="no-referrer"
-                                loading="eager"
-                                class="w-4 h-4 rounded-full no-lightense"
-                            >
-                            <span>{{ post.collection.name }}</span>
+                    <div class="flex flex-col flex-1 px-5 pb-5">
+                        <div class="flex flex-wrap items-center gap-2 text-sm text-gray-500 dark:text-gray-300">
+                            {% if post.collection %}
+                                <a
+                                    href="https://medium.com/{{ post.collection.slug }}"
+                                    title="{{ post.collection.shortDescription }}"
+                                    target="_blank"
+                                    class="inline-flex items-center gap-1 hover:text-purple-500"
+                                >
+                                    <img
+                                        src="https://miro.medium.com/v2/resize:fill:48:48/{{ post.collection.avatar.id }}"
+                                        alt="{{ post.collection.name }}"
+                                        referrerpolicy="no-referrer"
+                                        loading="eager"
+                                        class="w-4 h-4 rounded-full no-lightense"
+                                    >
+                                    <span>{{ post.collection.name }}</span>
+                                </a>
+                                <span>·</span>
+                            {% endif %}
+
+                            <span>~{{ post.reading_time }} min read</span>
+                            <span>·</span>
+                            <span>{{ post.first_published_at }} (Updated: {{ post.updated_at }})</span>
+                            <span>·</span>
+                            <span class="text-yellow-600 dark:text-yellow-300">Free: {{ post.free_access }}</span>
+                        </div>
+
+                        <p class="mt-4 leading-relaxed text-gray-600 line-clamp-3 dark:text-gray-200">
+                            {{ post.description }}
+                        </p>
+
+                        <a href="/{{ post.post_id }}" class="inline-block mt-auto pt-5 font-medium text-purple-500 hover:text-purple-400">
+                            Read More
                         </a>
-                        <span>·</span>
-                    {% endif %}
-
-                    <span>~{{ post.reading_time }} min read</span>
-                    <span>·</span>
-                    <span>{{ post.first_published_at }} (Updated: {{ post.updated_at }})</span>
-                    <span>·</span>
-                    <span class="text-yellow-600 dark:text-yellow-300">Free: {{ post.free_access }}</span>
-                </div>
-
-                <p class="mt-4 leading-relaxed text-gray-600 line-clamp-3 dark:text-gray-200">
-                    {{ post.description }}
-                </p>
-
-                <a href="/{{ post.post_id }}" class="inline-block mt-5 font-medium text-purple-500 hover:text-purple-400">
-                    Read More
-                </a>
-            </div>
-        </article>
-    {% endfor %}
-</div>
+                    </div>
+                </article>
+            {% endfor %}
+        </div>
+    </div>
+</section>
