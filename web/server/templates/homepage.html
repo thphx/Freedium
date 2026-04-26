@@ -1,18 +1,18 @@
-<div class="grid w-full grid-cols-1 gap-4 p-2 md:grid-cols-2 lg:grid-cols-3">
+<div class="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
     {% for post in post_list %}
-        <div class="p-6 bg-white dark:bg-gray-600 rounded-xl">
+        <article class="overflow-hidden transition duration-200 bg-white border border-gray-200 shadow-sm dark:bg-gray-700 dark:border-gray-600 rounded-2xl hover:shadow-lg">
             <a class="group" href="/{{ post.post_id }}">
-                <div class="flex items-center justify-center m-auto overflow-hidden max-h-60 min-h-60">
+                <div class="overflow-hidden bg-gray-100 aspect-video dark:bg-gray-800">
                     {% if post.preview_image_id %}
                         <img loading="eager" referrerpolicy="no-referrer" src="https://miro.medium.com/v2/resize:fit:700/{{ post.preview_image_id }}"
                              class="w-full h-auto transition-all transition duration-200 ease-in-out hover:scale-105">
                     </div>
                 {% else %}
                     <img loading="eager" referrerpolicy="no-referrer" src="https://images.unsplash.com/photo-1636467204130-edf8ee206dce?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80"
-                         class="w-full h-auto transition-all transition duration-200 ease-in-out hover:scale-105">
+                         class="object-cover w-full h-full transition duration-300 ease-in-out group-hover:scale-105"
                 </div>
             {% endif %}
-            <h3 class="mt-6 text-xl font-semibold leading-normal text-gray-800 transition duration-200 ease-in-out dark:text-gray-100 group-hover:text-purple-400 lg:text-2xl line-clamp-3 translation-all">{{ post.title }}</h3>
+            <h3 class="mt-6 text-xl font-semibold leading-normal text-gray-800 transition duration-200 ease-in-out dark:text-gray-100 group-hover:text-purple-400 lg:text-2xl line-clamp-3 transition duration-200">{{ post.title }}</h3>
         </a>
         <div class="mt-6">
             <div class="flex flex-wrap items-center space-x-2 text-sm text-gray-500 dark:text-white">
