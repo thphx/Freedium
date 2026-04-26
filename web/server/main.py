@@ -74,5 +74,3 @@ def create_application() -> FastAPI:
 
 
 app = create_application()
-
-app.mount("/static", StaticFiles(directory="static"), name="static")
