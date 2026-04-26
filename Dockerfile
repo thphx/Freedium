@@ -40,11 +40,14 @@ RUN useradd -m freedium
 # - starts nginx on Railway's public $PORT
 # - serves /tailwindcssv3-freedium-hotfix.js and favicon assets from /app/caddy/static
 RUN cat > /app/start.sh <<'SH'
-#!/bin/sh
-set -eu
+#!/bin/bash
+set -euo pipefail
 
 PUBLIC_PORT="${PORT:-8080}"
-APP_PORT="${APP_PORT:-7000}"
+APP_PORT="${APP_PORT:-7080}"
+
+echo "Starting Freedium on internal port ${APP_PORT}"
+echo "Starting nginx on public port ${PUBLIC_PORT}"
 
 mkdir -p /tmp/nginx/client_body \
          /tmp/nginx/proxy \
@@ -99,17 +102,13 @@ EOF
 
 cd /app/web
 
-python3 -m server server --port "${APP_PORT}"
+python3 -m server server --port "${APP_PORT}" &
 APP_PID="$!"
+
+sleep 2
 
 nginx -c /tmp/nginx.conf -g "daemon off;" &
 NGINX_PID="$!"
 
 wait -n "$APP_PID" "$NGINX_PID"
 SH
-
-RUN chmod +x /app/start.sh && chown -R freedium:freedium /app /tmp
-
-USER freedium
-
-CMD ["/app/start.sh"]
