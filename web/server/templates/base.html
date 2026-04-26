@@ -105,15 +105,15 @@
     class="m-1.5 flex h-10 w-10 items-center justify-center rounded-full bg-gray-200 text-gray-800 shadow-lg hover:bg-gray-300 focus:outline-none dark:bg-gray-700 dark:text-yellow-300 dark:hover:bg-gray-600">
 
     <!-- MDI weather-night: shown in light mode, click to switch to dark -->
-    <svg
-        id="darkIcon"
-        class="h-5 w-5 fill-current"
-        xmlns="http://www.w3.org/2000/svg"
-        viewBox="0 0 24 24"
-        aria-hidden="true"
-    >
-        <path d="M12.74 2.31L15.17 2.67L13.7 4.61C12.76 5.85 12.25 7.36 12.25 8.91C12.25 12.83 15.42 16 19.34 16C19.86 16 20.38 15.94 20.88 15.83L23.25 15.31L21.86 17.31C20.18 19.72 17.43 21.16 14.5 21.16C9.53 21.16 5.5 17.13 5.5 12.16C5.5 7.76 8.69 4 12.74 2.31Z" />
-    </svg>
+    <span
+    id="darkIcon"
+    class="h-5 w-5 bg-current"
+    aria-hidden="true"
+    style='
+        -webkit-mask: url("data:image/svg+xml;utf8,%3Csvg viewBox=%270 0 24 24%27 width=%271em%27 height=%271em%27 xmlns=%27http://www.w3.org/2000/svg%27 %3E%3Cpath fill=%27currentColor%27 d=%27m17.75 4.09l-2.53 1.94l.91 3.06l-2.63-1.81l-2.63 1.81l.91-3.06l-2.53-1.94L12.44 4l1.06-3l1.06 3zm3.5 6.91l-1.64 1.25l.59 1.98l-1.7-1.17l-1.7 1.17l.59-1.98L15.75 11l2.06-.05L18.5 9l.69 1.95zm-2.28 4.95c.83-.08 1.72 1.1 1.19 1.85c-.32.45-.66.87-1.08 1.27C15.17 23 8.84 23 4.94 19.07c-3.91-3.9-3.91-10.24 0-14.14c.4-.4.82-.76 1.27-1.08c.75-.53 1.93.36 1.85 1.19c-.27 2.86.69 5.83 2.89 8.02a9.96 9.96 0 0 0 8.02 2.89m-1.64 2.02a12.08 12.08 0 0 1-7.8-3.47c-2.17-2.19-3.33-5-3.49-7.82c-2.81 3.14-2.7 7.96.31 10.98c3.02 3.01 7.84 3.12 10.98.31%27/%3E%3C/svg%3E") no-repeat center / contain;
+        mask: url("data:image/svg+xml;utf8,%3Csvg viewBox=%270 0 24 24%27 width=%271em%27 height=%271em%27 xmlns=%27http://www.w3.org/2000/svg%27 %3E%3Cpath fill=%27currentColor%27 d=%27m17.75 4.09l-2.53 1.94l.91 3.06l-2.63-1.81l-2.63 1.81l.91-3.06l-2.53-1.94L12.44 4l1.06-3l1.06 3zm3.5 6.91l-1.64 1.25l.59 1.98l-1.7-1.17l-1.7 1.17l.59-1.98L15.75 11l2.06-.05L18.5 9l.69 1.95zm-2.28 4.95c.83-.08 1.72 1.1 1.19 1.85c-.32.45-.66.87-1.08 1.27C15.17 23 8.84 23 4.94 19.07c-3.91-3.9-3.91-10.24 0-14.14c.4-.4.82-.76 1.27-1.08c.75-.53 1.93.36 1.85 1.19c-.27 2.86.69 5.83 2.89 8.02a9.96 9.96 0 0 0 8.02 2.89m-1.64 2.02a12.08 12.08 0 0 1-7.8-3.47c-2.17-2.19-3.33-5-3.49-7.82c-2.81 3.14-2.7 7.96.31 10.98c3.02 3.01 7.84 3.12 10.98.31%27/%3E%3C/svg%3E") no-repeat center / contain;
+    '
+></span>
 
     <!-- MDI lightbulb-on-outline: shown in dark mode, click to switch to light -->
     <svg
