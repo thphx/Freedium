@@ -44,7 +44,7 @@ RUN cat > /app/start.sh <<'SH'
 set -eu
 
 PUBLIC_PORT="${PORT:-8080}"
-APP_PORT="${APP_PORT:-8000}"
+APP_PORT="${APP_PORT:-7000}"
 
 mkdir -p /tmp/nginx/client_body \
          /tmp/nginx/proxy \
@@ -99,7 +99,7 @@ EOF
 
 cd /app/web
 
-PORT="${APP_PORT}" python3 -m server server &
+python3 -m server server --port "${APP_PORT}"
 APP_PID="$!"
 
 nginx -c /tmp/nginx.conf -g "daemon off;" &
