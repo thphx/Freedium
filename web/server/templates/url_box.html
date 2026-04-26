@@ -1,39 +1,38 @@
 <div class="w-full max-w-4xl px-4 mx-auto">
-    <form
-      id="medium-link-form"
-      class="flex items-center gap-3 px-4 py-3 bg-white border border-gray-300 dark:border-gray-500 dark:bg-gray-800 rounded-xl focus-within:ring-1 focus-within:ring-green-400 focus-within:border-green-400"
+  <form
+    id="medium-link-form"
+    class="flex items-center gap-3 px-4 py-3 bg-white border border-gray-300 dark:border-gray-500 dark:bg-gray-800 rounded-xl focus-within:ring-1 focus-within:ring-green-400 focus-within:border-green-400"
+  >
+    <svg
+      class="w-5 h-5 text-gray-500 dark:text-gray-300 shrink-0"
+      fill="none"
+      stroke="currentColor"
+      viewBox="0 0 24 24"
+      xmlns="http://www.w3.org/2000/svg"
     >
-      <svg
-        class="w-5 h-5 text-gray-500 dark:text-gray-100 shrink-0"
-        fill="none"
-        stroke="currentColor"
-        viewBox="0 0 24 24"
-        xmlns="http://www.w3.org/2000/svg"
-      >
-        <path
-          stroke-linecap="round"
-          stroke-linejoin="round"
-          stroke-width="2"
-          d="M12 6v6m0 0v6m0-6h6m-6 0H6"
-        ></path>
-      </svg>
+      <path
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        stroke-width="2"
+        d="M13.828 10.172a4 4 0 010 5.656l-3 3a4 4 0 01-5.656-5.656l1.5-1.5M10.172 13.828a4 4 0 010-5.656l3-3a4 4 0 015.656 5.656l-1.5 1.5"
+      ></path>
+    </svg>
 
-      <input
-        id="medium-link-input"
-        type="text"
-        placeholder="Enter Medium post link"
-        class="w-full text-gray-900 bg-transparent border-0 focus:border-0 focus:ring-0 focus:outline-none placeholder-gray-400 dark:text-white dark:placeholder-gray-300"
-        autofocus
-      />
+    <input
+      id="medium-link-input"
+      type="text"
+      placeholder="Enter Medium post link"
+      class="w-full text-gray-900 bg-transparent border-0 focus:border-0 focus:ring-0 focus:outline-none placeholder-gray-400 dark:text-white dark:placeholder-gray-300"
+    />
 
-      <button
-        type="submit"
-        class="px-5 py-2.5 font-medium text-white bg-green-500 rounded-lg shrink-0 hover:bg-green-600 focus:outline-none focus:ring-2 focus:ring-green-400"
-      >
-        Go
-      </button>
-    </form>
-  </div>
+    <button
+      type="submit"
+      aria-label="Open Medium post"
+      class="px-5 py-2.5 font-medium text-white bg-green-500 rounded-lg shrink-0 hover:bg-green-600 focus:outline-none focus:ring-2 focus:ring-green-400"
+    >
+      Go
+    </button>
+  </form>
 </div>
 
 <script>
