@@ -1,14 +1,10 @@
-<div
-  <div class="w-full max-w-4xl mx-auto bg-white/90 dark:bg-gray-700/80 shadow-lg rounded-2xl p-5 md:p-6">
->
+<div class="w-full max-w-4xl mx-auto bg-white/90 dark:bg-gray-700/80 shadow-lg rounded-2xl p-5 md:p-6">
   <form
     id="medium-link-form"
-    <form
-  id="medium-link-form"
-  class="flex items-center gap-3 rounded-xl border border-gray-300 dark:border-gray-500 bg-white dark:bg-gray-800 px-4 py-3"
+    class="flex items-center gap-3 rounded-xl border border-gray-300 dark:border-gray-500 bg-white dark:bg-gray-800 px-4 py-3"
   >
     <svg
-      class="h-5 w-5 text-gray-500 dark:text-gray-100 mr-2"
+      class="h-5 w-5 text-gray-500 dark:text-gray-100 shrink-0"
       fill="none"
       stroke="currentColor"
       viewBox="0 0 24 24"
@@ -21,6 +17,7 @@
         d="M12 6v6m0 0v6m0-6h6m-6 0H6"
       ></path>
     </svg>
+
     <input
       id="medium-link-input"
       type="text"
@@ -28,19 +25,22 @@
       class="w-full bg-transparent border-0 focus:border-0 focus:ring-0 focus:outline-none text-gray-900 placeholder-gray-400 dark:text-white dark:placeholder-gray-300"
       autofocus
     />
+
     <button
       type="submit"
-      class="ml-2 bg-green-500 text-white px-4 py-2 rounded-md hover:bg-green-600 focus:outline-none"
+      class="shrink-0 bg-green-500 text-white px-4 py-2 rounded-lg hover:bg-green-600 focus:outline-none"
     >
       Go
     </button>
   </form>
 </div>
+
 <script>
   document
     .getElementById("medium-link-form")
     .addEventListener("submit", function (event) {
       event.preventDefault();
+
       const mediumLinkInput = document.getElementById("medium-link-input");
       window.location.href = `${window.location.origin}/${mediumLinkInput.value}`;
     });
