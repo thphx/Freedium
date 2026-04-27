@@ -126,6 +126,153 @@
         <div class="mt-8 main-content">
             {% for paragraph in content %}{{ paragraph }}{% endfor %}
         </div>
+        <div
+    id="highlightToolbar"
+    class="fixed z-[999999] hidden px-3 py-1.5 text-sm font-medium text-slate-900 bg-yellow-300 rounded-full shadow-lg cursor-pointer select-none dark:text-slate-900"
+>
+    Highlight
+</div>
+
+<style>
+    .freedium-highlight {
+        background: linear-gradient(
+            transparent 55%,
+            rgba(250, 204, 21, 0.55) 55%
+        );
+        color: inherit;
+        border-radius: 0.15rem;
+        padding: 0 0.05em;
+    }
+</style>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        const mainContent = document.querySelector(".main-content");
+        const toolbar = document.getElementById("highlightToolbar");
+
+        if (!mainContent || !toolbar) {
+            return;
+        }
+
+        const storageKey = `freedium-highlights:${window.location.pathname}`;
+
+        const savedContent = localStorage.getItem(storageKey);
+        if (savedContent) {
+            mainContent.innerHTML = savedContent;
+        }
+
+        function saveHighlights() {
+            const clonedContent = mainContent.cloneNode(true);
+
+            clonedContent.querySelectorAll(".hljs-copy").forEach((button) => {
+                button.remove();
+            });
+
+            localStorage.setItem(storageKey, clonedContent.innerHTML);
+        }
+
+        function hideToolbar() {
+            toolbar.classList.add("hidden");
+        }
+
+        function getSelectionRange() {
+            const selection = window.getSelection();
+
+            if (!selection || selection.rangeCount === 0 || selection.isCollapsed) {
+                return null;
+            }
+
+            const range = selection.getRangeAt(0);
+
+            if (
+    !mainContent.contains(range.commonAncestorContainer) ||
+    !mainContent.contains(range.startContainer) ||
+    !mainContent.contains(range.endContainer)
+) {
+    return null;
+}
+
+            const parentElement =
+                range.commonAncestorContainer.nodeType === Node.TEXT_NODE
+                    ? range.commonAncestorContainer.parentElement
+                    : range.commonAncestorContainer;
+
+            if (
+                parentElement &&
+                parentElement.closest("pre, code, a, button, .freedium-highlight")
+            ) {
+                return null;
+            }
+
+            return range;
+        }
+
+        document.addEventListener("mouseup", function () {
+            const range = getSelectionRange();
+
+            if (!range) {
+                hideToolbar();
+                return;
+            }
+
+            const rect = range.getBoundingClientRect();
+
+            toolbar.style.left = `${rect.left + window.scrollX}px`;
+            toolbar.style.top = `${rect.top + window.scrollY - 42}px`;
+            toolbar.classList.remove("hidden");
+        });
+
+        toolbar.addEventListener("mousedown", function (event) {
+            event.preventDefault();
+
+            const range = getSelectionRange();
+
+            if (!range) {
+                hideToolbar();
+                return;
+            }
+
+            const mark = document.createElement("mark");
+            mark.className = "freedium-highlight";
+
+            try {
+                range.surroundContents(mark);
+            } catch (error) {
+                const selectedContent = range.extractContents();
+                mark.appendChild(selectedContent);
+                range.insertNode(mark);
+            }
+
+            window.getSelection().removeAllRanges();
+            hideToolbar();
+            saveHighlights();
+        });
+
+        mainContent.addEventListener("dblclick", function (event) {
+            const highlight = event.target.closest(".freedium-highlight");
+
+            if (!highlight) {
+                return;
+            }
+
+            const parent = highlight.parentNode;
+
+            while (highlight.firstChild) {
+                parent.insertBefore(highlight.firstChild, highlight);
+            }
+
+            highlight.remove();
+            parent.normalize();
+            saveHighlights();
+        });
+
+        document.addEventListener("mousedown", function (event) {
+            if (!toolbar.contains(event.target)) {
+                hideToolbar();
+            }
+        });
+    });
+</script>
         <div class="flex flex-wrap gap-2 mt-5">
             {% for tag in tags %}<a title="{{ tag.displayTitle }}" target="_blank" href="https://medium.com/tag/{{ tag.normalizedTagSlug }}"><span class="px-2 py-1 text-xs text-green-500 bg-green-100 rounded-full dark:bg-green-800 dark:text-gray-100">#{{ tag.normalizedTagSlug }}</span></a>{% endfor %}
         </div>
