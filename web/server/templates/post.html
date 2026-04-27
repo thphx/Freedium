@@ -18,6 +18,21 @@
             {% set article_text = content | join(' ') | striptags %}
 {% set word_count = article_text.split() | length %}
 
+{% set updated_label = updatedAt
+    | replace('January ', 'Jan ')
+    | replace('February ', 'Feb ')
+    | replace('March ', 'Mar ')
+    | replace('April ', 'Apr ')
+    | replace('May ', 'May ')
+    | replace('June ', 'Jun ')
+    | replace('July ', 'Jul ')
+    | replace('August ', 'Aug ')
+    | replace('September ', 'Sep ')
+    | replace('October ', 'Oct ')
+    | replace('November ', 'Nov ')
+    | replace('December ', 'Dec ')
+%}
+
 <div class="pt-6 font-sans text-sm text-slate-500 dark:text-slate-400">
     <a
         href="https://medium.com/@{{ creator.username }}"
@@ -34,12 +49,9 @@
     <span>·</span>
     <span>{{ word_count }} words</span>
 
-    <span>·</span>
-    <span>{{ firstPublishedAt }}</span>
-
-    {% if updatedAt and updatedAt != firstPublishedAt %}
+    {% if updatedAt %}
         <span>·</span>
-        <span>Updated {{ updatedAt }}</span>
+        <span>Updated {{ updated_label }}</span>
     {% endif %}
 </div>
             <h1 class="pt-2 pb-2 font-sans text-3xl font-bold text-slate-900 break-normal dark:text-slate-100 md:text-4xl">{{ title }}</h1>
