@@ -135,13 +135,18 @@
 
 <style>
     .freedium-highlight {
-        background: linear-gradient(
-            transparent 55%,
-            rgba(250, 204, 21, 0.55) 55%
-        );
+        background-color: #d8ead2;
         color: inherit;
-        border-radius: 0.15rem;
-        padding: 0 0.05em;
+        padding: 0 0.08em;
+        border-radius: 0.1rem;
+        cursor: pointer;
+        transition: background-color 0.2s ease;
+        box-decoration-break: clone;
+        -webkit-box-decoration-break: clone;
+    }
+
+    .freedium-highlight:hover {
+        background-color: #c6dfbd;
     }
 </style>
 
