@@ -2,7 +2,7 @@
     <div class="max-w-6xl mx-auto">
         <div class="grid items-stretch grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
             {% for post in post_list %}
-                <article class="flex flex-col h-full overflow-hidden transition duration-200 bg-white border border-gray-200 shadow-sm dark:bg-gray-700 dark:border-gray-600 rounded-2xl hover:shadow-lg">
+                <article class="flex flex-col h-full overflow-hidden transition duration-200 bg-white border border-gray-200 shadow-sm dark:bg-slate-800 dark:border-slate-700 rounded-2xl hover:shadow-lg">
                     <a class="block overflow-hidden bg-gray-100 h-52 md:h-56 dark:bg-gray-800 group" href="/{{ post.post_id }}">
                         {% if post.preview_image_id %}
                             <img
