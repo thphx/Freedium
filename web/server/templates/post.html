@@ -178,7 +178,17 @@
 
         function hideToolbar() {
             toolbar.classList.add("hidden");
+            function rangeIntersectsHighlight(range) {
+    const highlights = mainContent.querySelectorAll(".freedium-highlight");
+
+    for (const highlight of highlights) {
+        if (range.intersectsNode(highlight)) {
+            return true;
         }
+    }
+
+    return false;
+}
 
         function getSelectionRange() {
             const selection = window.getSelection();
@@ -203,13 +213,17 @@
                     : range.commonAncestorContainer;
 
             if (
-                parentElement &&
-                parentElement.closest("pre, code, a, button, .freedium-highlight")
-            ) {
-                return null;
-            }
+    parentElement &&
+    parentElement.closest("pre, code, a, button, .freedium-highlight")
+) {
+    return null;
+}
 
-            return range;
+if (rangeIntersectsHighlight(range)) {
+    return null;
+}
+
+return range;
         }
 
         document.addEventListener("mouseup", function () {
