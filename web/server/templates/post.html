@@ -159,7 +159,7 @@
             return;
         }
 
-        const storageKey = `freedium-highlights:${window.location.pathname}`;
+        const storageKey = `freedium-highlights:v2:${window.location.pathname}`;
 
         const savedContent = localStorage.getItem(storageKey);
         if (savedContent) {
