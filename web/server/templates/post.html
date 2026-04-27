@@ -344,24 +344,6 @@ function rangeIntersectsHighlight(range) {
             saveHighlights();
         });
 
-        mainContent.addEventListener("dblclick", function (event) {
-            const highlight = event.target.closest(".freedium-highlight");
-
-            if (!highlight) {
-                return;
-            }
-
-            const parent = highlight.parentNode;
-
-            while (highlight.firstChild) {
-                parent.insertBefore(highlight.firstChild, highlight);
-            }
-
-            highlight.remove();
-            parent.normalize();
-            saveHighlights();
-        });
-
         document.addEventListener("mousedown", function (event) {
             if (!toolbar.contains(event.target)) {
                 hideToolbar();
