@@ -18,6 +18,21 @@
             {% set article_text = content | join(' ') | striptags %}
 {% set word_count = article_text.split() | length %}
 
+{% set published_label = firstPublishedAt
+    | replace('January ', 'Jan ')
+    | replace('February ', 'Feb ')
+    | replace('March ', 'Mar ')
+    | replace('April ', 'Apr ')
+    | replace('May ', 'May ')
+    | replace('June ', 'Jun ')
+    | replace('July ', 'Jul ')
+    | replace('August ', 'Aug ')
+    | replace('September ', 'Sep ')
+    | replace('October ', 'Oct ')
+    | replace('November ', 'Nov ')
+    | replace('December ', 'Dec ')
+%}
+
 {% set updated_label = updatedAt
     | replace('January ', 'Jan ')
     | replace('February ', 'Feb ')
@@ -49,9 +64,11 @@
     <span>·</span>
     <span>{{ word_count }} words</span>
 
-    {% if updatedAt %}
-        <span>·</span>
+    <span>·</span>
+    {% if updatedAt and updatedAt != firstPublishedAt %}
         <span>Updated {{ updated_label }}</span>
+    {% else %}
+        <span>{{ published_label }}</span>
     {% endif %}
 </div>
             <h1 class="pt-2 pb-2 font-sans text-3xl font-bold text-slate-900 break-normal dark:text-slate-100 md:text-4xl">{{ title }}</h1>
