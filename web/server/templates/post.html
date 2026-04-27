@@ -178,17 +178,19 @@
 
         function hideToolbar() {
             toolbar.classList.add("hidden");
-            function rangeIntersectsHighlight(range) {
-    const highlights = mainContent.querySelectorAll(".freedium-highlight");
-
-    for (const highlight of highlights) {
-        if (range.intersectsNode(highlight)) {
-            return true;
         }
-    }
 
-    return false;
-}
+        function rangeIntersectsHighlight(range) {
+            const highlights = mainContent.querySelectorAll(".freedium-highlight");
+
+            for (const highlight of highlights) {
+                if (range.intersectsNode(highlight)) {
+                    return true;
+                }
+            }
+
+            return false;
+        }
 
         function getSelectionRange() {
             const selection = window.getSelection();
@@ -200,12 +202,12 @@
             const range = selection.getRangeAt(0);
 
             if (
-    !mainContent.contains(range.commonAncestorContainer) ||
-    !mainContent.contains(range.startContainer) ||
-    !mainContent.contains(range.endContainer)
-) {
-    return null;
-}
+                !mainContent.contains(range.commonAncestorContainer) ||
+                !mainContent.contains(range.startContainer) ||
+                !mainContent.contains(range.endContainer)
+            ) {
+                return null;
+            }
 
             const parentElement =
                 range.commonAncestorContainer.nodeType === Node.TEXT_NODE
@@ -213,40 +215,40 @@
                     : range.commonAncestorContainer;
 
             if (
-    parentElement &&
-    parentElement.closest("pre, code, a, button, .freedium-highlight")
-) {
-    return null;
-}
+                parentElement &&
+                parentElement.closest("pre, code, a, button, .freedium-highlight")
+            ) {
+                return null;
+            }
 
-if (rangeIntersectsHighlight(range)) {
-    return null;
-}
+            if (rangeIntersectsHighlight(range)) {
+                return null;
+            }
 
-return range;
+            return range;
         }
 
         document.addEventListener("mouseup", function () {
-    const range = getSelectionRange();
+            const range = getSelectionRange();
 
-    if (!range) {
-        hideToolbar();
-        return;
-    }
+            if (!range) {
+                hideToolbar();
+                return;
+            }
 
-    const rect = range.getBoundingClientRect();
+            const rect = range.getBoundingClientRect();
 
-    toolbar.classList.remove("hidden");
+            toolbar.classList.remove("hidden");
 
-    const toolbarWidth = toolbar.offsetWidth;
-    const toolbarHeight = toolbar.offsetHeight;
+            const toolbarWidth = toolbar.offsetWidth;
+            const toolbarHeight = toolbar.offsetHeight;
 
-    const left = rect.left + rect.width / 2 - toolbarWidth / 2;
-    const top = rect.top - toolbarHeight - 10;
+            const left = rect.left + rect.width / 2 - toolbarWidth / 2;
+            const top = rect.top - toolbarHeight - 10;
 
-    toolbar.style.left = `${Math.max(12, Math.min(left, window.innerWidth - toolbarWidth - 12))}px`;
-    toolbar.style.top = `${Math.max(12, top)}px`;
-});
+            toolbar.style.left = `${Math.max(12, Math.min(left, window.innerWidth - toolbarWidth - 12))}px`;
+            toolbar.style.top = `${Math.max(12, top)}px`;
+        });
 
         toolbar.addEventListener("mousedown", function (event) {
             event.preventDefault();
